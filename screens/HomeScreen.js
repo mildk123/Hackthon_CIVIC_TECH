@@ -15,7 +15,7 @@ export default class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView>
-        <Text>Test 123</Text>
+        <Text>Test 12123</Text>
         </ScrollView>
 
       </View>
