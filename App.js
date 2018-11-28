@@ -1,50 +1,63 @@
-import React, { Component } from "react";
-import {
-  StyleSheet
-} from "react-native";
-
+import React from 'react';
+import { Platform, StatusBar, StyleSheet, View, AsyncStorage } from 'react-native';
 import { Font, AppLoading } from "expo";
-
 import AppStackNavigator from './navigation/navigator'
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { loading: true };
+export default class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      isLoadingComplete: false,
+    };
   }
-
-
 
   _loadResourcesAsync = async () => {
     return Promise.all([
-
       await Font.loadAsync({
         Roboto: require("native-base/Fonts/Roboto.ttf"),
-        Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf")
+        Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
+        'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
       })
     ]);
   };
 
+
+  _handleLoadingError = error => {
+    console.warn(error);
+  };
+
+  _handleFinishLoading = () => {
+    this.setState({ isLoadingComplete: true });
+  };
+
+
   render() {
-    if (this.state.loading) {
+
+    if (!this.state.isLoadingComplete) {
       return (
         <AppLoading
           startAsync={this._loadResourcesAsync}
-          onFinish={() => this.setState({ loading: false }) }
+          onError={this._handleLoadingError}
+          onFinish={this._handleFinishLoading}
         />
+
+      );
+    } else {
+      return (
+        <View style={styles.container}>
+          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+          <AppStackNavigator />
+        </View>
       );
     }
-    return (
-      <AppStackNavigator />
-    );
-  }
-}
-export default App;
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     alignItems: 'center',
-//     justifyContent: 'center'
-//   }
-// });
+  }
+
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+});
