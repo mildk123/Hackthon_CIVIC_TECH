@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
 import { Container, Content, Form, Item, Label, Input, Button, Text } from 'native-base'
 
+import { AsyncStorage } from "react-native"
+
 import firebase from '../Config/firebase'
-// const database = firebase.database().ref()
 
 class LoginScreen extends Component {
     constructor() {
@@ -17,6 +18,7 @@ class LoginScreen extends Component {
         if ((this.state.loginEmail !== undefined) && (this.state.loginPassword !== undefined) ){
             firebase.auth().signInWithEmailAndPassword(this.state.loginEmail, this.state.loginPassword)
                 .then(() => {
+                    AsyncStorage.setItem('usered', true);
                     this.props.navigation.navigate('Home')
                 })
                 .catch((error) => {
@@ -40,13 +42,13 @@ class LoginScreen extends Component {
                 <Content>
                     <Text>Login</Text>
                     <Form>
-                        <Item floatingLabel>
+                        <Item stackedLabel>
                             <Label>Email</Label>
                             <Input
                                 onChangeText={(email) => this._onChange('loginEmail', email)}
                             />
                         </Item>
-                        <Item floatingLabel>
+                        <Item stackedLabel>
                             <Label>Password</Label>
                             <Input
                                 onChangeText={(Password) => this._onChange('loginPassword', Password)}
@@ -67,7 +69,7 @@ export default LoginScreen;
 
 const styles = StyleSheet.create({
     container: {
-        padding: 10
+        padding: 20
     },
     btn: {
         flex: 1,

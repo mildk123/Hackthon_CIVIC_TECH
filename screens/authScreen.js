@@ -12,6 +12,7 @@ class AuthScreen extends Component {
     header : null
   }
 
+  
     render() {
         return (
             <View style={styles.container}>

@@ -11,6 +11,22 @@ export default class App extends React.Component {
     };
   }
 
+
+  async componentDidMount() {
+    let storedValue = await AsyncStorage.getItem("usered");
+    console.log("Fetched data: ", storedValue);
+    if (storedValue == null) {
+      console.log("Writing data!");
+      this.setState({
+        user: true
+      });
+      storedValue = await AsyncStorage.setItem("usered", "data");
+    }
+
+  }
+
+
+
   _loadResourcesAsync = async () => {
     return Promise.all([
       await Font.loadAsync({
@@ -45,8 +61,9 @@ export default class App extends React.Component {
     } else {
       return (
         <View style={styles.container}>
-          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          <AppStackNavigator />
+          <StatusBar barStyle="default" />
+        <AppStackNavigator />
+          
         </View>
       );
     }

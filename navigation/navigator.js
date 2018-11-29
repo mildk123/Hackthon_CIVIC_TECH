@@ -10,4 +10,9 @@ export default AppStackNavigator = createStackNavigator({
     LoginScreen: LoginScreen,
     SignUpScreen : SignUpScreen,
     Main: MainTabNavigator,
+},{
+    navigationOptions : {
+        gesturesEnabled: false,
+        header: null
+    }
 })
