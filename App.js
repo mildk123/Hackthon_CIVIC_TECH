@@ -12,7 +12,7 @@ export default class App extends React.Component {
   }
 
 
-  async componentWillMount() {
+  async componentDidMount() {
     let storedValue = await AsyncStorage.getItem("usered");
     console.log("Fetched data: ", storedValue);
     if (storedValue == null) {
