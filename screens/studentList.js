@@ -8,14 +8,14 @@ import {
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
-    title : 'Home'
+    title : 'Students '
   };
 
   render() {
     return (
       <View style={styles.container}>
         <ScrollView>
-        <Text>Test 12123</Text>
+          <Text>Students List here</Text>
         </ScrollView>
 
       </View>
