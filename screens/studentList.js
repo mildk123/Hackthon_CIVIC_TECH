@@ -70,9 +70,9 @@ export default class HomeScreen extends React.Component {
                   onPress={() => this._viewMore(index)}
                   key={index}
                 >
-                  <Left>
-                    <Thumbnail source={{ uri: kid.picture.thumbnail }} />
-                  </Left>
+                    <Left>
+                      <Thumbnail source={{ uri: kid.picture.thumbnail }} />
+                    </Left>
                   <Body>
                     <Text>{kid.name.first} {kid.name.last}</Text>
                     <Text note>Doing what you like will always</Text>
