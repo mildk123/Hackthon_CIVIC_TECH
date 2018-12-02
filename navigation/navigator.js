@@ -2,13 +2,13 @@ import { createStackNavigator } from 'react-navigation'
 
 import MainTabNavigator from './MainTabNavigator';
 import authScreen from '../screens/authScreen'
-import LoginScreen from '../screens/LoginScreen';
-import SignUpScreen from '../screens/SignUpScreen';
+import ParentScreen from '../screens/ParentScreen';
+import DriverScreen from '../screens/DriverScreen';
 
 export default AppStackNavigator = createStackNavigator({
     Auth: authScreen,
-    LoginScreen: LoginScreen,
-    SignUpScreen : SignUpScreen,
+    Parent: ParentScreen,
+    Driver : DriverScreen,
     Main: MainTabNavigator,
 },{
     navigationOptions : {
