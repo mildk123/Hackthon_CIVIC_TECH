@@ -18,10 +18,10 @@ class AuthScreen extends Component {
         header: null
     }
 
-    componentWillMount(){
-        Expo.SecureStore.getItemAsync('usered')
-        .then(callback => console.log(callback))
-    }
+    // componentWillMount(){
+    //     Expo.SecureStore.getItemAsync('usered')
+    //     .then(callback => console.log(callback))
+    // }
 
 
     render() {
