@@ -1,6 +1,7 @@
 import React from "react";
 import {
     Text,
+    StyleSheet,
     BackHandler
 
 } from "react-native";
